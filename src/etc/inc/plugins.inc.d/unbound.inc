@@ -445,16 +445,17 @@ function unbound_add_host_entries($ifconfig_details)
     openlog('unbound', LOG_DAEMON, LOG_LOCAL4);
 
     $local_zone_type = $general['local_zone_type'];
+    $local_zone_ttl = $general['local_zone_ttl'];
 
     $unbound_entries = "local-zone: \"{$config['system']['domain']}\" {$local_zone_type}\n";
 
     $unbound_entries .= "local-data-ptr: \"127.0.0.1 localhost\"\n";
-    $unbound_entries .= "local-data: \"localhost A 127.0.0.1\"\n";
-    $unbound_entries .= "local-data: \"localhost.{$config['system']['domain']} A 127.0.0.1\"\n";
+    $unbound_entries .= "local-data: \"localhost {$local_zone_ttl} IN A 127.0.0.1\"\n";
+    $unbound_entries .= "local-data: \"localhost.{$config['system']['domain']} {$local_zone_ttl} IN A 127.0.0.1\"\n";
 
     $unbound_entries .= "local-data-ptr: \"::1 localhost\"\n";
-    $unbound_entries .= "local-data: \"localhost AAAA ::1\"\n";
-    $unbound_entries .= "local-data: \"localhost.{$config['system']['domain']} AAAA ::1\"\n";
+    $unbound_entries .= "local-data: \"localhost {$local_zone_ttl} IN AAAA ::1\"\n";
+    $unbound_entries .= "local-data: \"localhost.{$config['system']['domain']} {$local_zone_ttl} IN AAAA ::1\"\n";
 
     if (!empty($general['active_interface'])) {
         $interfaces = explode(",", $general['active_interface']);

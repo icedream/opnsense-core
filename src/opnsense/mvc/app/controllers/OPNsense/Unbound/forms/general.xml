@@ -113,6 +113,15 @@
         </help>
     </field>
     <field>
+        <id>unbound.general.local_zone_ttl</id>
+        <label>Local Zone TTL value</label>
+        <type>text</type>
+        <help>
+            <![CDATA[The TTL in seconds for entries created for the local zones.
+            The default is 3600.]]>
+        </help>
+    </field>
+    <field>
         <id>unbound.general.outgoing_interface</id>
         <label>Outgoing Network Interfaces</label>
         <type>select_multiple</type>

@@ -50,6 +50,9 @@
                     <opt11 value="typetransparent">typetransparent</opt11>
                 </OptionValues>
             </local_zone_type>
+            <local_zone_ttl type="NumericField">
+                <Default>3600</Default>
+            </local_zone_ttl>
             <outgoing_interface type=".\UnboundInterfaceField">
                 <Multiple>Y</Multiple>
             </outgoing_interface>
